@@ -1,4 +1,4 @@
-import 'package:buisness_chat/constants/strings.dart';
+import 'package:buisness_chat/helpers/strings.dart';
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {

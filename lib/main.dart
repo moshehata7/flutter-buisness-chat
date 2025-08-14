@@ -1,4 +1,5 @@
 import 'package:buisness_chat/firebase_options.dart';
+import 'package:buisness_chat/screens/chat_page.dart';
 import 'package:buisness_chat/screens/log_in_page.dart';
 import 'package:buisness_chat/screens/sign_up_page.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -20,7 +21,8 @@ class BusinessChat extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         LogInPage.id : (context)=> LogInPage(),
-        SignUpPage.id :(context)=>SignUpPage()
+        SignUpPage.id :(context)=>SignUpPage(),
+        ChatPage.id :(context)=>ChatPage()
       },
       initialRoute:LogInPage.id,
     );

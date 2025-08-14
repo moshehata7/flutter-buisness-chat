@@ -1,6 +1,6 @@
-import 'package:buisness_chat/constants/strings.dart';
+import 'package:buisness_chat/helpers/strings.dart';
 import 'package:buisness_chat/widget/custom_button.dart';
-import 'package:buisness_chat/widget/custom_show_snack_bar.dart';
+import 'package:buisness_chat/helpers/custom_show_snack_bar.dart';
 import 'package:buisness_chat/widget/custom_text_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +25,6 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return ModalProgressHUD(
-
       inAsyncCall: isLoading,
       child: Scaffold(
         appBar: AppBar(
@@ -88,27 +87,31 @@ class _SignUpPageState extends State<SignUpPage> {
                         isLoading = true;
                         setState(() {});
                         try {
-                          await signUpUser();
-                          showSnackBar(context, msg: "succeeded");
+                          await FirebaseAuth.instance
+                              .createUserWithEmailAndPassword(
+                                email: email!,
+                                password: password!,
+                              );
+                          customShowSnackBar(context, msg: "succeeded");
                         } on FirebaseAuthException catch (e) {
                           if (e.code == 'weak-password') {
-                            showSnackBar(
+                            customShowSnackBar(
                               context,
                               msg: "The Pasword is weak-password",
                             );
                           } else if (e.code == 'email-already-in-use') {
-                            showSnackBar(
+                            customShowSnackBar(
                               context,
-                              msg: "'The account already exists for that email.'",
+                              msg:
+                                  "'The account already exists for that email.'",
                             );
                           }
                         } catch (e) {
-                          showSnackBar(context, msg: e.toString());
+                          customShowSnackBar(context, msg: e.toString());
                         }
                         isLoading = false;
                         setState(() {});
                       }
-                      
                     },
                   ),
                 ],
@@ -120,8 +123,8 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
-  Future<void> signUpUser() async {
-    UserCredential user = await FirebaseAuth.instance
-        .createUserWithEmailAndPassword(email: email!, password: password!);
-  }
+  // Future<void> signUpUser() async {
+  //   UserCredential user = await FirebaseAuth.instance
+  //       .createUserWithEmailAndPassword(email: email!, password: password!);
+  // }
 }
