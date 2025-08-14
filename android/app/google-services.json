@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "534806065016",
+    "project_id": "business-chat-1382025",
+    "storage_bucket": "business-chat-1382025.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:534806065016:android:1b73e9618f87106f77e28d",
+        "android_client_info": {
+          "package_name": "com.example.buisness_chat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsNOsF_BwLEZTewEhRjcI6x3EyBNR8QLw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
